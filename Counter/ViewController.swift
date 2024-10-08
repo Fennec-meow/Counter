@@ -11,26 +11,30 @@ class ViewController: UIViewController {
     @IBOutlet var reset: UIButton!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         displayingLogs("История изменений:", false)
         counter.textAlignment = .center
+        counter.textColor = .black
         counter.text = String(myCounter)
         counter.font = UIFont.systemFont(ofSize: 40)
         counterTitle.text = "Значение счетчика:"
         counterTitle.font = UIFont.systemFont(ofSize: 23)
+        counterTitle.backgroundColor = .white
+        counterTitle.textColor = .black
+        counterLog.textColor = .black
         addAnAccount.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         addAnAccount.backgroundColor = .red
+        addAnAccount.tintColor = .white
+        minusTheBill.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         minusTheBill.backgroundColor = .blue
-        reset.backgroundColor = .brown
-        
+        minusTheBill.tintColor = .white
     }
     
     func deductTheBill() {
         counter.text = String(myCounter)
     }
-   
     
     func displayingLogs(_ writingText: String, _ recordTheDate: Bool) {
         var currentDateTime: String
@@ -45,15 +49,10 @@ class ViewController: UIViewController {
         counterLog.insertText(currentDateTime + writingText + "\n")
     }
     
-    
-    
-    
-    
     @IBAction func add(_ sender: Any) {
         myCounter += 1
         deductTheBill()
         displayingLogs("значение изменено на +1", true)
-
     }
     
     @IBAction func minus(_ sender: Any) {
@@ -64,7 +63,6 @@ class ViewController: UIViewController {
         } else {
             displayingLogs("попытка уменьшить значение счётчика ниже 0", true)
         }
-       
     }
     
     @IBAction func reset(_ sender: Any) {
